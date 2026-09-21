@@ -1,11 +1,11 @@
-# Double Dutch registration
+# Double Dutch — регистрация 16–17 ноября 2026
 
-Готовая форма регистрации 16–17 ноября 2026 с записью в Google Sheets.
+Форма отправляет данные через `/api/register` в опубликованный Google Apps Script, который записывает заявки в Google Sheets.
 
-## Подключение Google Sheets
-1. В Google Cloud включите Google Sheets API и создайте Service Account.
-2. Откройте таблицу `1dEJUKGeo0zHqAqRqN8dPgLzfl9B630wO2sp4WgzwWJM` и дайте email Service Account права редактора.
-3. На Vercel добавьте переменные из `.env.example`.
-4. Разверните GitHub-репозиторий на Vercel.
+## Развёртывание
+1. Загрузить проект в GitHub.
+2. Vercel автоматически выполнит новый deployment.
+3. Переменные окружения Google Service Account больше не нужны.
 
-Никогда не коммитьте private key в GitHub.
+## Проверка
+Отправить тестовую заявку с сайта и проверить листы `Заявки` и `Участники` в Google Sheets.

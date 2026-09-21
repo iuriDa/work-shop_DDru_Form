@@ -1,67 +1,79 @@
-const { google } = require('googleapis');
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyxzByDLWdHIjYM2ppuqzyDmaygSi1ER3mZGn0oGNxraNEnMlf5zFyEeytrEgk2zsQI/exec';
 
-const SHEET_ID = process.env.GOOGLE_SHEET_ID;
-const ATHLETE_PRICE = 18500;
-const COACH_PRICE = 10000;
+function clean(v, max = 1000) {
+  return String(v ?? '').trim().slice(0, max);
+}
 
-function clean(v, max = 500) { return String(v ?? '').trim().slice(0, max); }
-function integer(v, fallback = 0) { const n = Number.parseInt(v, 10); return Number.isFinite(n) && n >= 0 ? n : fallback; }
+function integer(v, fallback = 0) {
+  const n = Number.parseInt(v, 10);
+  return Number.isFinite(n) && n >= 0 ? n : fallback;
+}
 
 module.exports = async (req, res) => {
-  if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'Method not allowed' });
+  }
+
   try {
     const b = req.body || {};
-    if (b.website) return res.status(200).json({ ok: true }); // honeypot
 
-    const type = clean(b.type, 40);
-    const contact = clean(b.contact, 120);
-    const phone = clean(b.phone, 50);
-    if (!type || !contact || !phone || b.consent !== true) return res.status(400).json({ error: 'Заполните обязательные поля.' });
-
-    const athletes = type === 'group' ? Math.max(1, integer(b.athletes, 1)) : 1;
-    const coaches = type === 'group' ? integer(b.coaches, 0) : 0;
-    const athleteTotal = athletes * ATHLETE_PRICE;
-    const coachTotal = coaches * COACH_PRICE;
-    const total = athleteTotal + coachTotal;
-
-    const auth = new google.auth.JWT({
-      email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
-      key: (process.env.GOOGLE_PRIVATE_KEY || '').replace(/\\n/g, '\n'),
-      scopes: ['https://www.googleapis.com/auth/spreadsheets']
-    });
-    const sheets = google.sheets({ version: 'v4', auth });
-    const now = new Date().toLocaleString('ru-RU', { timeZone: 'Europe/Moscow' });
-    const typeLabel = type === 'group' ? 'Группа / клуб' : type === 'parent' ? 'Родитель' : 'Участник самостоятельно';
-
-    await sheets.spreadsheets.values.append({
-      spreadsheetId: SHEET_ID,
-      range: 'Заявки!A:T',
-      valueInputOption: 'USER_ENTERED',
-      insertDataOption: 'INSERT_ROWS',
-      requestBody: { values: [[
-        now, typeLabel, clean(b.club,120), clean(b.city,100), contact,
-        type === 'group' ? 'Тренер / руководитель группы' : type === 'parent' ? 'Родитель' : 'Спортсмен',
-        phone, clean(b.social,120), athletes, coaches, clean(b.age,80), clean(b.level,80),
-        clean(b.food,500), clean(b.comment,1000), ATHLETE_PRICE, total, 0, total, 'Новая', 'Нет'
-      ]] }
-    });
-
-    if (type !== 'group') {
-      await sheets.spreadsheets.values.append({
-        spreadsheetId: SHEET_ID,
-        range: 'Участники!A:O', valueInputOption: 'USER_ENTERED', insertDataOption: 'INSERT_ROWS',
-        requestBody: { values: [[clean(b.club,120), clean(b.athleteName || contact,120), clean(b.birthDate,30), clean(b.age,30), clean(b.city,100), clean(b.coachName,120), clean(b.level,80), phone, clean(b.parentName,120), clean(b.food,500), '', '', 'Не оплачено', 'Не выдана', clean(b.comment,1000)]] }
-      });
+    if (b.website) return res.status(200).json({ ok: true });
+    if (!b.type || !b.contact || !b.phone || b.consent !== true) {
+      return res.status(400).json({ error: 'Заполните обязательные поля.' });
     }
 
-    await sheets.spreadsheets.values.append({
-      spreadsheetId: SHEET_ID,
-      range: 'Размещение и оплата!A:P', valueInputOption: 'USER_ENTERED', insertDataOption: 'INSERT_ROWS',
-      requestBody: { values: [[clean(b.club,120) || contact, contact, athletes, coaches, athletes + coaches, ATHLETE_PRICE, athleteTotal, COACH_PRICE, coachTotal, total, 0, total, '', 'Включено', 'Новая', clean(b.comment,1000)]] }
+    let type;
+    if (b.type === 'self') type = 'athlete';
+    else if (b.type === 'parent') type = 'parent';
+    else if (b.type === 'group') type = 'coach';
+    else return res.status(400).json({ error: 'Некорректный тип заявки.' });
+
+    const payload = {
+      type,
+      website: clean(b.website, 100),
+      city: clean(b.city, 100),
+      club: clean(b.club, 120),
+      phone: clean(b.phone, 50),
+      social: clean(b.social, 120),
+      level: clean(b.level || b.groupLevel, 80),
+      food: clean(b.food, 500),
+      comment: clean(b.comment, 1000),
+
+      athleteName: clean(b.athleteName || (type === 'athlete' ? b.contact : ''), 120),
+      birthDate: clean(b.birthDate, 30),
+      age: clean(b.age, 30),
+      parentName: clean(b.parentName || (type === 'parent' ? b.contact : ''), 120),
+      coachName: clean(type === 'coach' ? b.contact : b.coachName, 120),
+      coach: clean(b.coachName, 120),
+
+      athletesCount: type === 'coach' ? Math.max(1, integer(b.athletes, 1)) : 1,
+      coachesCount: type === 'coach' ? Math.max(1, integer(b.coaches, 1)) : 0
+    };
+
+    const response = await fetch(APPS_SCRIPT_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(payload),
+      redirect: 'follow'
     });
-    return res.status(200).json({ ok: true, total });
-  } catch (e) {
-    console.error(e);
-    return res.status(500).json({ error: 'Не удалось отправить заявку. Попробуйте ещё раз.' });
+
+    const text = await response.text();
+    let result;
+    try {
+      result = JSON.parse(text);
+    } catch {
+      throw new Error('Google Apps Script вернул некорректный ответ.');
+    }
+
+    if (!result.ok) {
+      throw new Error(result.error || 'Google Apps Script не принял заявку.');
+    }
+
+    return res.status(200).json(result);
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({
+      error: 'Не удалось отправить заявку. Попробуйте ещё раз.'
+    });
   }
 };
