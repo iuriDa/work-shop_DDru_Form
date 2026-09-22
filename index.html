@@ -1,56 +1,155 @@
-<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#d9ff39"><title>Double Dutch — 16–17 ноября</title><style>
-:root{--ink:#111;--paper:#f6f3ea;--acid:#d9ff39;--purple:#7455ff;--line:#c9c5ba}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.45 Inter,Arial,sans-serif}.wrap{max-width:980px;margin:auto;padding:24px}.hero{border:3px solid #111;padding:clamp(24px,6vw,64px);position:relative;overflow:hidden;background:linear-gradient(135deg,var(--acid) 0 18%,transparent 18% 82%,var(--purple) 82%)}.tag{font-weight:900;letter-spacing:.08em}.hero h1{font-size:clamp(52px,12vw,120px);line-height:.8;margin:24px 0 18px;letter-spacing:-.07em}.hero h1 span{display:block}.lead{max-width:650px;font-size:clamp(18px,2.5vw,25px);font-weight:700}.facts{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}.pill{border:2px solid #111;padding:9px 12px;background:#fff;font-weight:800}.price{margin-top:28px;font-size:20px;font-weight:900}.card{margin-top:24px;border:2px solid #111;background:#fff;padding:clamp(20px,4vw,42px);box-shadow:9px 9px 0 #111}h2{font-size:clamp(30px,5vw,48px);margin:0 0 24px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.full{grid-column:1/-1}label{display:block;font-weight:800;margin-bottom:7px}input,select,textarea{width:100%;padding:14px;border:2px solid #111;background:#fff;font:inherit;border-radius:0}textarea{min-height:100px;resize:vertical}.choice{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.choice label{border:2px solid #111;padding:14px;margin:0;cursor:pointer;background:#fff}.choice input{width:auto;margin-right:7px}.hidden{display:none!important}.consent{display:flex;gap:10px;align-items:flex-start}.consent input{width:auto;margin-top:5px}.submit{width:100%;border:3px solid #111;background:var(--acid);padding:17px;font-weight:950;font-size:20px;cursor:pointer;box-shadow:6px 6px 0 #111}.submit:disabled{opacity:.55}.success{padding:30px;background:var(--acid);border:3px solid #111;font-size:22px;font-weight:800}.small{font-size:13px;color:#555}.hp{position:absolute;left:-9999px}@media(max-width:700px){.wrap{padding:12px}.grid{grid-template-columns:1fr}.full{grid-column:auto}.choice{grid-template-columns:1fr}.hero{padding:28px 20px}.card{box-shadow:5px 5px 0 #111}}
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#d9ff39"><title>Double Dutch — 16–17 ноября</title><meta name="description" content="Мастер-класс по Double Dutch 16–17 ноября 2026, Московская область. Регистрация участников, родителей и групп."><style>
+:root{--ink:#111;--paper:#f6f3ea;--acid:#d9ff39;--purple:#7455ff;--line:#c9c5ba;--err:#c62828}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.45 Inter,Arial,sans-serif}.wrap{max-width:980px;margin:auto;padding:24px}.hero{border:3px solid #111;padding:clamp(24px,6vw,64px);position:relative;overflow:hidden;background:linear-gradient(135deg,var(--acid) 0 18%,transparent 18% 82%,var(--purple) 82%)}.tag{font-weight:900;letter-spacing:.08em}.hero h1{font-size:clamp(52px,12vw,120px);line-height:.8;margin:24px 0 18px;letter-spacing:-.07em}.hero h1 span{display:block}.lead{max-width:650px;font-size:clamp(18px,2.5vw,25px);font-weight:700}.facts{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}.pill{border:2px solid #111;padding:9px 12px;background:#fff;font-weight:800}.price{margin-top:28px;font-size:20px;font-weight:900}.card{margin-top:24px;border:2px solid #111;background:#fff;padding:clamp(20px,4vw,42px);box-shadow:9px 9px 0 #111}h2{font-size:clamp(30px,5vw,48px);margin:0 0 24px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.full{grid-column:1/-1}label,.lbl{display:block;font-weight:800;margin-bottom:7px}input,select,textarea{width:100%;padding:14px;border:2px solid #111;background:#fff;font:inherit;border-radius:0;color:var(--ink)}input:focus,select:focus,textarea:focus{outline:3px solid var(--purple);outline-offset:1px}input:user-invalid,select:user-invalid{border-color:var(--err);background:#fff6f6}textarea{min-height:100px;resize:vertical}
+fieldset{border:0;margin:0;padding:0;min-width:0}.choice{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.choice label{display:flex;gap:10px;align-items:flex-start;border:2px solid #111;padding:14px;margin:0;cursor:pointer;background:#fff;transition:transform .12s,box-shadow .12s,background .12s}.choice input{width:auto;margin:4px 0 0;accent-color:#111;flex:none}.choice b{display:block;font-weight:900}.choice small{display:block;font-weight:600;color:#555;font-size:13px;margin-top:2px}.choice label.on{background:var(--acid);box-shadow:5px 5px 0 #111;transform:translate(-2px,-2px)}.choice label.on small{color:#111}.choice label:focus-within{outline:3px solid var(--purple);outline-offset:3px}
+.sec{grid-column:1/-1;margin-top:10px;padding-top:20px;border-top:2px solid #111;font-size:24px;font-weight:950;letter-spacing:-.02em}.hint{font-size:13px;color:#555;margin:6px 0 0}.hint:empty{display:none}.total{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center;gap:6px 18px;flex-wrap:wrap;border:3px solid #111;padding:16px 20px;background:var(--paper)}.total .t-l{font-weight:800}.total .t-l small{display:block;font-weight:600;color:#555;font-size:13px}.total .t-v{font-size:clamp(28px,5vw,40px);font-weight:950;letter-spacing:-.04em;white-space:nowrap}
+.hidden{display:none!important}.consent{display:flex;gap:10px;align-items:flex-start;font-weight:700}.consent input{width:auto;margin-top:5px;accent-color:#111}.submit{width:100%;border:3px solid #111;background:var(--acid);padding:17px;font-weight:950;font-size:20px;cursor:pointer;box-shadow:6px 6px 0 #111;color:var(--ink)}.submit:disabled{opacity:.55;cursor:progress}.submit:focus-visible{outline:3px solid var(--purple);outline-offset:4px}.success{padding:30px;background:var(--acid);border:3px solid #111;font-size:22px;font-weight:800}.success:focus{outline:none}.success p{font-size:16px;font-weight:600;margin:10px 0 0}.success .sum{font-size:18px;font-weight:900}.small{font-size:13px;color:#555}#msg{margin:12px 0 0;min-height:1em}#msg.err{color:var(--err);font-size:15px;font-weight:800}.hp{position:absolute;left:-9999px}
+@media(max-width:700px){.wrap{padding:12px}.grid{grid-template-columns:1fr}.full,.sec,.total{grid-column:auto}.choice{grid-template-columns:1fr}.hero{padding:28px 20px}.card{box-shadow:5px 5px 0 #111}}@media(prefers-reduced-motion:reduce){.choice label{transition:none}}
 </style></head><body><main class="wrap"><section class="hero"><div class="tag">МОСКОВСКАЯ ОБЛАСТЬ · 16–17 НОЯБРЯ 2026</div><h1><span>DOUBLE</span><span>DUTCH</span></h1><div class="lead">Не просто разучиваем элементы — собираем связки и комбинации, работаем над круткой, входами, выходами, ритмом и командным взаимодействием.</div><div class="facts"><div class="pill">4 тренировки × 2,5 часа</div><div class="pill">Проживание</div><div class="pill">3-разовое питание</div><div class="pill">🎁 Бисерная DDRu спортсмену</div></div><div class="price">Спортсмен — 18 500 ₽ · Тренер / руководитель группы — 10 000 ₽</div></section>
-<section class="card"><h2>Регистрация</h2><form id="form"><div class="full"><label>Кто подаёт заявку? *</label><div class="choice"><label><input type="radio" name="type" value="self" required>Участник</label><label><input type="radio" name="type" value="parent">Родитель</label><label><input type="radio" name="type" value="group">Тренер / клуб</label></div></div><div class="grid" style="margin-top:18px"><div><label>Контактное лицо *</label><input name="contact" required placeholder="ФИО"></div><div><label>Телефон *</label><input name="phone" required inputmode="tel" placeholder="+7 ..."></div><div><label>Telegram / VK</label><input name="social" placeholder="@username или ссылка"></div><div><label>Город *</label><input name="city" required></div><div><label>Клуб / команда</label><input name="club"></div><div id="personLevel"><label>Уровень Double Dutch *</label><select name="level"><option value="">Выберите</option><option>Начинающий</option><option>Средний</option><option>Продвинутый</option></select></div>
-<div id="person" class="full grid"><div><label>ФИО спортсмена *</label><input name="athleteName"></div><div><label>Дата рождения</label><input name="birthDate" type="date"></div><div><label>Возраст</label><input name="age" inputmode="numeric"></div><div><label>Тренер</label><input name="coachName"></div><div id="parentBox" class="hidden"><label>ФИО родителя / представителя</label><input name="parentName"></div></div>
-<div id="group" class="full grid hidden"><div><label>Количество спортсменов *</label><input name="athletes" type="number" min="1" value="1"></div><div><label>Тренеров / руководителей группы *</label><input name="coaches" type="number" min="1" value="1"></div><div class="full"><label>Уровень группы *</label><select name="groupLevel"><option value="">Выберите</option><option>Начинающие</option><option>Средний уровень</option><option>Продвинутые</option><option>Смешанная группа / разные уровни</option></select></div><div class="full small"><b>Список спортсменов сейчас не нужен.</b> После подтверждения заявки мы отдельно запросим ФИО и данные участников.</div></div>
-<div class="full"><label>Питание / аллергии</label><textarea name="food" placeholder="Если особенностей нет — оставьте пустым"></textarea></div><div class="full"><label>Комментарий</label><textarea name="comment"></textarea></div><input class="hp" name="website" tabindex="-1" autocomplete="off"><div class="full"><label class="consent"><input type="checkbox" name="consent" required> <span>Согласен(на) на обработку данных, указанных в заявке, для организации мастер-класса. *</span></label></div><div class="full"><button class="submit" type="submit">ОТПРАВИТЬ ЗАЯВКУ →</button><p id="msg" class="small"></p></div></div></form><div id="success" class="success hidden">Заявка принята! 🔥<br><span style="font-size:16px;font-weight:600">Свяжемся с вами для подтверждения места и дальнейших шагов.</span></div></section></main><script>
-const f=document.querySelector('#form'), person=document.querySelector('#person'), group=document.querySelector('#group'), parentBox=document.querySelector('#parentBox'), personLevel=document.querySelector('#personLevel'), msg=document.querySelector('#msg'), success=document.querySelector('#success');
-f.addEventListener('change',e=>{if(e.target.name!=='type')return;const v=e.target.value,isGroup=v==='group';group.classList.toggle('hidden',!isGroup);person.classList.toggle('hidden',isGroup);personLevel.classList.toggle('hidden',isGroup);parentBox.classList.toggle('hidden',v!=='parent');f.athleteName.required=!isGroup;f.athletes.required=isGroup;f.coaches.required=isGroup;f.level.required=!isGroup;f.groupLevel.required=isGroup;});
+
+<section class="card" id="reg"><h2>Регистрация</h2>
+<form id="form">
+  <fieldset>
+    <legend class="lbl">Кто подаёт заявку? *</legend>
+    <div class="choice">
+      <label><input type="radio" name="type" value="self" required><span><b>Участник</b><small>Записываюсь сам(а)</small></span></label>
+      <label><input type="radio" name="type" value="parent"><span><b>Родитель</b><small>Записываю ребёнка</small></span></label>
+      <label><input type="radio" name="type" value="group"><span><b>Тренер / клуб</b><small>Привожу группу</small></span></label>
+    </div>
+  </fieldset>
+  <p id="pick" class="small">Выберите вариант — форма покажет только нужные поля.</p>
+
+  <div id="fields" class="grid hidden" style="margin-top:8px">
+    <div class="sec" data-label-self="Ваши данные" data-label-parent="Родитель" data-label-group="Руководитель группы">Контакты</div>
+    <div><label for="contact" data-label-self="Ваше ФИО *" data-label-parent="ФИО родителя / представителя *" data-label-group="ФИО тренера / руководителя *">ФИО *</label><input id="contact" name="contact" required autocomplete="name" placeholder="Фамилия Имя Отчество"></div>
+    <div><label for="phone">Телефон *</label><input id="phone" name="phone" type="tel" required autocomplete="tel" inputmode="tel" placeholder="+7 ..."></div>
+    <div><label for="social">Telegram / VK</label><input id="social" name="social" placeholder="@username или ссылка"><p class="hint">Так быстрее связаться</p></div>
+    <div><label for="city">Город *</label><input id="city" name="city" required autocomplete="address-level2"></div>
+    <div class="full"><label for="club" data-label-self="Клуб / команда" data-label-parent="Клуб / команда" data-label-group="Клуб / команда *">Клуб / команда</label><input id="club" name="club" data-req="group" placeholder="Если есть"></div>
+
+    <div class="sec" data-for="self parent" data-label-self="Спортсмен" data-label-parent="Ребёнок">Спортсмен</div>
+    <div class="full" data-for="parent"><label for="athleteName">ФИО ребёнка *</label><input id="athleteName" name="athleteName" data-req="parent" placeholder="Фамилия Имя"></div>
+    <div data-for="self parent"><label for="birthDate">Дата рождения *</label><input id="birthDate" name="birthDate" type="date" min="1950-01-01" data-req="self parent"><p class="hint" id="ageHint"></p></div>
+    <div data-for="self parent"><label for="level">Уровень Double Dutch *</label><select id="level" name="level" data-req="self parent"><option value="">Выберите</option><option>Начинающий</option><option>Средний</option><option>Продвинутый</option></select></div>
+    <div class="full" data-for="self parent"><label for="coachName">Тренер</label><input id="coachName" name="coachName" placeholder="Если занимаетесь у тренера"></div>
+
+    <div class="sec" data-for="group">Группа</div>
+    <div data-for="group"><label for="athletes">Количество спортсменов *</label><input id="athletes" name="athletes" type="number" min="1" max="100" value="1" inputmode="numeric" data-req="group"></div>
+    <div data-for="group"><label for="coaches">Тренеров / сопровождающих *</label><input id="coaches" name="coaches" type="number" min="1" max="20" value="1" inputmode="numeric" data-req="group"><p class="hint">Включая вас</p></div>
+    <div class="full" data-for="group"><label for="groupLevel">Уровень группы *</label><select id="groupLevel" name="level" data-req="group"><option value="">Выберите</option><option>Начинающий</option><option>Средний</option><option>Продвинутый</option><option value="Смешанный">Смешанная группа / разные уровни</option></select></div>
+    <div class="full small" data-for="group"><b>Список спортсменов сейчас не нужен.</b> После подтверждения заявки мы отдельно запросим ФИО и данные участников.</div>
+
+    <div class="sec">Дополнительно</div>
+    <div class="full"><label for="food" data-label-self="Питание / аллергии" data-label-parent="Питание / аллергии ребёнка" data-label-group="Питание / аллергии в группе">Питание / аллергии</label><textarea id="food" name="food" placeholder="Если особенностей нет — оставьте пустым"></textarea></div>
+    <div class="full"><label for="comment">Комментарий</label><textarea id="comment" name="comment" placeholder="Вопросы, пожелания, время приезда"></textarea></div>
+
+    <div class="total" aria-live="polite"><div class="t-l">К оплате<small id="totalHow">Участие спортсмена</small></div><div class="t-v" id="totalSum">18 500 ₽</div></div>
+
+    <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <div class="full"><label class="consent"><input type="checkbox" name="consent" required> <span>Согласен(на) на обработку данных, указанных в заявке, для организации мастер-класса. *</span></label></div>
+    <div class="full"><button class="submit" type="submit">ОТПРАВИТЬ ЗАЯВКУ →</button><p id="msg" class="small" role="status"></p></div>
+  </div>
+</form>
+
+<div id="success" class="success hidden" tabindex="-1">
+  <div>Заявка <span id="sId"></span> принята! 🔥</div>
+  <p class="sum">К оплате: <span id="sSum"></span></p>
+  <p>Свяжемся с вами для подтверждения места и оплаты. Сохраните номер заявки — по нему быстрее найти её в списке.</p>
+  <p id="sGroup" class="hidden">Список спортсменов запросим отдельно — сейчас его готовить не нужно.</p>
+</div>
+</section></main>
+
+<script>
 const API_URL='https://script.google.com/macros/s/AKfycbyxzByDLWdHIjYM2ppuqzyDmaygSi1ER3mZGn0oGNxraNEnMlf5zFyEeytrEgk2zsQI/exec';
+const PRICE_ATHLETE=18500, PRICE_COACH=10000, EVENT_DAY=new Date(2026,10,16);
+
+const f=document.getElementById('form'), $=id=>document.getElementById(id);
+const fields=$('fields'), msg=$('msg'), btn=f.querySelector('.submit'), BTN_TEXT=btn.textContent;
+const money=n=>String(n).replace(/\B(?=(\d{3})+(?!\d))/g,' ')+' ₽';
+const plural=(n,a)=>{const m=n%100,d=n%10;return m>10&&m<20?a[2]:d>1&&d<5?a[1]:d===1?a[0]:a[2]};
+const int=(v,min,max)=>{const n=parseInt(v,10);return isNaN(n)?min:Math.min(max,Math.max(min,n))};
+const type=()=>(f.querySelector('input[name=type]:checked')||{}).value;
+
+$('birthDate').max=new Date().toISOString().slice(0,10);
+
+function applyType(t){
+  $('pick').classList.add('hidden'); fields.classList.remove('hidden');
+  f.querySelectorAll('.choice label').forEach(l=>l.classList.toggle('on',l.querySelector('input').checked));
+  f.querySelectorAll('[data-for]').forEach(el=>{
+    const on=el.dataset.for.split(' ').includes(t);
+    el.classList.toggle('hidden',!on);
+    el.querySelectorAll('input,select,textarea').forEach(i=>i.disabled=!on);
+  });
+  f.querySelectorAll('[data-req]').forEach(i=>i.required=i.dataset.req.split(' ').includes(t));
+  f.querySelectorAll('[data-label-'+t+']').forEach(el=>el.textContent=el.getAttribute('data-label-'+t));
+  calc();
+}
+
+function calc(){
+  const t=type(); if(!t) return;
+  let a=1,c=0;
+  if(t==='group'){a=int($('athletes').value,1,100); c=int($('coaches').value,1,20);}
+  $('totalSum').textContent=money(a*PRICE_ATHLETE+c*PRICE_COACH);
+  $('totalHow').textContent=t==='group'
+    ? `${a} ${plural(a,['спортсмен','спортсмена','спортсменов'])} × 18 500 ₽ + ${c} ${plural(c,['тренер','тренера','тренеров'])} × 10 000 ₽`
+    : 'Участие спортсмена: тренировки, проживание, питание';
+}
+
+function ageHint(){
+  const v=$('birthDate').value, h=$('ageHint'); if(!v){h.textContent='';return}
+  const b=new Date(v+'T12:00'); let a=EVENT_DAY.getFullYear()-b.getFullYear();
+  if(EVENT_DAY<new Date(EVENT_DAY.getFullYear(),b.getMonth(),b.getDate())) a--;
+  h.textContent=a>=0&&a<90?`На мастер-классе: ${a} ${plural(a,['год','года','лет'])}`:'';
+}
+
+function checkPhone(){
+  const p=$('phone'), d=p.value.replace(/\D/g,'');
+  p.setCustomValidity(d.length<10?'Проверьте номер: нужно минимум 10 цифр':'');
+}
+
+f.addEventListener('change',e=>{ if(e.target.name==='type') applyType(e.target.value); });
+f.addEventListener('input',e=>{
+  if(e.target.id==='athletes'||e.target.id==='coaches') calc();
+  if(e.target.id==='birthDate') ageHint();
+  if(e.target.id==='phone') checkPhone();
+});
+
 f.addEventListener('submit',async e=>{
   e.preventDefault();
-  const btn=f.querySelector('button');
-  btn.disabled=true;
-  msg.textContent='Отправляем…';
-  const fd=new FormData(f);
-  const raw=Object.fromEntries(fd.entries());
+  checkPhone();
+  if(!f.reportValidity()) return;
 
+  const raw=Object.fromEntries(new FormData(f).entries()), t=raw.type;
   const data={
-    type: raw.type==='self' ? 'athlete' : raw.type==='parent' ? 'parent' : 'coach',
-    contact: raw.contact || '',
-    phone: raw.phone || '',
-    social: raw.social || '',
-    city: raw.city || '',
-    club: raw.club || '',
-    level: raw.type==='group' ? (raw.groupLevel || '') : (raw.level || ''),
-    athleteName: raw.athleteName || '',
-    birthDate: raw.birthDate || '',
-    age: raw.age || '',
-    coach: raw.coachName || '',
-    coachName: raw.type==='group' ? (raw.contact || '') : (raw.coachName || ''),
-    parentName: raw.type==='parent' ? (raw.contact || raw.parentName || '') : (raw.parentName || ''),
-    athletesCount: raw.type==='group' ? (raw.athletes || '1') : '1',
-    coachesCount: raw.type==='group' ? (raw.coaches || '0') : '0',
-    food: raw.food || '',
-    comment: raw.comment || '',
-    website: raw.website || ''
+    type: t==='self'?'athlete':t==='parent'?'parent':'coach',
+    contact: raw.contact||'', phone: raw.phone||'', social: raw.social||'',
+    city: raw.city||'', club: raw.club||'',
+    athleteName: t==='self'?(raw.contact||''):(raw.athleteName||''),
+    birthDate: raw.birthDate||'', coachName: raw.coachName||'', level: raw.level||'',
+    athletes: t==='group'?int(raw.athletes,1,100):1, coaches: t==='group'?int(raw.coaches,1,20):0,
+    food: raw.food||'', comment: raw.comment||'', website: raw.website||'', consent: !!raw.consent
   };
 
+  btn.disabled=true; btn.textContent='ОТПРАВЛЯЕМ…';
+  msg.className='small'; msg.textContent='Обычно это занимает 3–5 секунд.';
+  const ctrl=new AbortController(), timer=setTimeout(()=>ctrl.abort(),30000);
   try{
-    const r=await fetch(API_URL,{
-      method:'POST',
-      redirect:'follow',
-      headers:{'Content-Type':'text/plain;charset=utf-8'},
-      body:JSON.stringify(data)
-    });
-    const j=await r.json();
-    if(!j.ok) throw new Error(j.error||'Ошибка записи');
-    f.classList.add('hidden');
-    success.classList.remove('hidden');
+    const r=await fetch(API_URL,{method:'POST',redirect:'follow',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(data),signal:ctrl.signal});
+    const text=await r.text(); let j;
+    try{ j=JSON.parse(text); }catch(_){ console.error('[DD] Ответ не JSON:',r.status,text.slice(0,300)); throw new Error('BAD_RESPONSE'); }
+    if(!j.ok) throw new Error(j.error||'Заявка не сохранилась. Попробуйте ещё раз.');
+    $('sId').textContent=j.id||'';
+    $('sSum').textContent=money(j.total||0);
+    $('sGroup').classList.toggle('hidden',data.type!=='coach');
+    f.classList.add('hidden'); $('success').classList.remove('hidden');
+    $('success').focus(); $('reg').scrollIntoView({behavior:'smooth',block:'start'});
   }catch(err){
-    msg.textContent='Не удалось отправить заявку: '+err.message;
-    btn.disabled=false;
-  }
+    console.error('[DD]',err);
+    msg.className='err';
+    msg.textContent = err.name==='AbortError' ? 'Сервер долго не отвечает. Нажмите «Отправить» ещё раз — повторная отправка не создаст дубль.'
+      : err.message==='BAD_RESPONSE' ? 'Сервер заявок сейчас недоступен. Попробуйте через минуту — данные в форме сохранены.'
+      : err instanceof TypeError ? 'Нет связи с сервером заявок. Проверьте интернет и отправьте ещё раз.'
+      : err.message;
+    btn.disabled=false; btn.textContent=BTN_TEXT;
+  }finally{ clearTimeout(timer); }
 });
 </script></body></html>
