@@ -7,5 +7,50 @@
 <div class="full"><label>Питание / аллергии</label><textarea name="food" placeholder="Если особенностей нет — оставьте пустым"></textarea></div><div class="full"><label>Комментарий</label><textarea name="comment"></textarea></div><input class="hp" name="website" tabindex="-1" autocomplete="off"><div class="full"><label class="consent"><input type="checkbox" name="consent" required> <span>Согласен(на) на обработку данных, указанных в заявке, для организации мастер-класса. *</span></label></div><div class="full"><button class="submit" type="submit">ОТПРАВИТЬ ЗАЯВКУ →</button><p id="msg" class="small"></p></div></div></form><div id="success" class="success hidden">Заявка принята! 🔥<br><span style="font-size:16px;font-weight:600">Свяжемся с вами для подтверждения места и дальнейших шагов.</span></div></section></main><script>
 const f=document.querySelector('#form'), person=document.querySelector('#person'), group=document.querySelector('#group'), parentBox=document.querySelector('#parentBox'), personLevel=document.querySelector('#personLevel'), msg=document.querySelector('#msg'), success=document.querySelector('#success');
 f.addEventListener('change',e=>{if(e.target.name!=='type')return;const v=e.target.value,isGroup=v==='group';group.classList.toggle('hidden',!isGroup);person.classList.toggle('hidden',isGroup);personLevel.classList.toggle('hidden',isGroup);parentBox.classList.toggle('hidden',v!=='parent');f.athleteName.required=!isGroup;f.athletes.required=isGroup;f.coaches.required=isGroup;f.level.required=!isGroup;f.groupLevel.required=isGroup;});
-f.addEventListener('submit',async e=>{e.preventDefault();const btn=f.querySelector('button');btn.disabled=true;msg.textContent='Отправляем…';const fd=new FormData(f),data=Object.fromEntries(fd.entries());data.consent=fd.has('consent');if(data.type==='group'){data.level=data.groupLevel;data.age='';}try{const r=await fetch('/api/register',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});const j=await r.json();if(!r.ok)throw new Error(j.error||'Ошибка');f.classList.add('hidden');success.classList.remove('hidden')}catch(err){msg.textContent=err.message;btn.disabled=false}});
+const API_URL='https://script.google.com/macros/s/AKfycbyxzByDLWdHIjYM2ppuqzyDmaygSi1ER3mZGn0oGNxraNEnMlf5zFyEeytrEgk2zsQI/exec';
+f.addEventListener('submit',async e=>{
+  e.preventDefault();
+  const btn=f.querySelector('button');
+  btn.disabled=true;
+  msg.textContent='Отправляем…';
+  const fd=new FormData(f);
+  const raw=Object.fromEntries(fd.entries());
+
+  const data={
+    type: raw.type==='self' ? 'athlete' : raw.type==='parent' ? 'parent' : 'coach',
+    contact: raw.contact || '',
+    phone: raw.phone || '',
+    social: raw.social || '',
+    city: raw.city || '',
+    club: raw.club || '',
+    level: raw.type==='group' ? (raw.groupLevel || '') : (raw.level || ''),
+    athleteName: raw.athleteName || '',
+    birthDate: raw.birthDate || '',
+    age: raw.age || '',
+    coach: raw.coachName || '',
+    coachName: raw.type==='group' ? (raw.contact || '') : (raw.coachName || ''),
+    parentName: raw.type==='parent' ? (raw.contact || raw.parentName || '') : (raw.parentName || ''),
+    athletesCount: raw.type==='group' ? (raw.athletes || '1') : '1',
+    coachesCount: raw.type==='group' ? (raw.coaches || '0') : '0',
+    food: raw.food || '',
+    comment: raw.comment || '',
+    website: raw.website || ''
+  };
+
+  try{
+    const r=await fetch(API_URL,{
+      method:'POST',
+      redirect:'follow',
+      headers:{'Content-Type':'text/plain;charset=utf-8'},
+      body:JSON.stringify(data)
+    });
+    const j=await r.json();
+    if(!j.ok) throw new Error(j.error||'Ошибка записи');
+    f.classList.add('hidden');
+    success.classList.remove('hidden');
+  }catch(err){
+    msg.textContent='Не удалось отправить заявку: '+err.message;
+    btn.disabled=false;
+  }
+});
 </script></body></html>
